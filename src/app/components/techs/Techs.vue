@@ -24,7 +24,7 @@ export default {
   },
   created() {
     return this.$http
-      .get('app/techs/techs.json')
+      .get('app/components/techs/techs.json')
       .then(response => response.json())
       .then(response => {
         this.techs = response;

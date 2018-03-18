@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Main from './app/Main.vue';
 
-import './index.scss';
+import './app/scss/index.scss';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 

@@ -12,8 +12,9 @@
 <script>
 import Header from './Header.vue';
 import Title from './Title.vue';
-import Techs from './techs/Techs.vue';
+import Techs from './components/techs/Techs.vue';
 import Footer from './Footer.vue';
+import './scss/techs.scss';
 
 export default {
   name: 'Main',

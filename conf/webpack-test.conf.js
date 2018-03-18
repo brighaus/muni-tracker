@@ -21,6 +21,18 @@ module.exports = {
           'babel-loader'
         ]
       },
+       /*
+       * SASS loader support for *.scss files
+       * Returns file content as string
+       *
+       * See: https://github.com/webpack/raw-loader
+      */
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+      },
+
       {
         test: /\.vue$/,
         loaders: [
