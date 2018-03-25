@@ -8,6 +8,7 @@
 
 <script>
 import * as d3 from "d3";
+import {eventBarkerMx} from '../../mixins/eventBarker/eventBarker.js';
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
@@ -51,6 +52,11 @@ export default {
         console.error('get missed:', err);
       });
     });
+
+    eventBarkerMx.$on('cacherefreshed', function(payload){
+      console.log('mapDisplay got cache refresh:', payload);
+    });
+
   }
 };
 </script>
