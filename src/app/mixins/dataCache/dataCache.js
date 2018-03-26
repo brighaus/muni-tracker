@@ -5,16 +5,30 @@ let cache = [];
 let routes = [];
 const busses = [];
 
-const getBusData = function (route) {
+const getBusData = function (route, limit, index) {
+  // console.log('inbdex',index);
   apiMx.getBusData(route)
     .then(r => {
-      console.log('bus data for:', r.data);
-      busses.push(r.data);
-      cache = busses;
-      eventBarkerMx.$emit('cacherefreshed', cache);
+      // console.log('bus data for:', r.data);
+      if (r.data.vehicle) {
+        // console.log('r.d.v:', r.data.vehicle);
+        if (r.data.vehicle.forEach) {
+          r.data.vehicle.forEach(v => {
+            // console.log('v:', v);
+            busses.push(v);
+          });
+        } else {
+          busses.push(r.data.vehicle);
+        }
+        if (index + 1 === limit) {
+          console.log('dataCache emits cacherefreshed...', limit);
+          cache = busses;
+          eventBarkerMx.$emit('cacherefreshed', cache);
+        }
+      }
     })
     .catch(err => {
-      console.log('dataCacheMx ERROR:', err.message || err);
+      console.log('dataCacheMx ERROR:', err.message || err, err);
     });
 };
 
@@ -28,11 +42,10 @@ export const dataCacheMx = {
       apiMx.getRouteData()
       .then(r => {
         routes = r.data;
-        console.log('routes:', routes);
         // loop routes and updates the busses list
-        getBusData('N');
-        // will finally happen before they finish? finally caleed before bus data tetched.
-        // eventBarkerMx.$emit('cacherefreshed', cache);
+        routes.route.forEach((rte, i) => {
+          getBusData(rte.tag, routes.route.length, i);
+        });
       })
       .catch(err => {
         console.log('dataCacheMx ERROR:', err.message || err);

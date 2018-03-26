@@ -3,6 +3,8 @@
   <h1>{{ text }}</h1>
   <h3>map data</h3>
   <p v-for="mapType in mapData" :mapType="mapType">{{  mapType.features ? mapType.features.length: 0}}</p>
+  <hr/>
+  <p v-for="bus in busData" :bus="bus">id: {{  bus.id }}, lon: {{ bus.lon }}, lat: {{ bus.lat }}</p>
   </div>
 </template>
 
@@ -23,7 +25,8 @@ export default {
         'freeways': {},
         'neighborhoods': {},
         'streets': {}
-      }
+      },
+      busData:[]
     }
   },
   created() {
@@ -53,8 +56,10 @@ export default {
       });
     });
 
-    eventBarkerMx.$on('cacherefreshed', function(payload){
-      console.log('mapDisplay got cache refresh:', payload);
+    eventBarkerMx.$on('cacherefreshed', payload => {
+      while(payload.length > 0) {
+        this.busData.push(payload.pop());
+      }
     });
 
   }
