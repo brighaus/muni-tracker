@@ -1,11 +1,5 @@
 <template>
-  <div class="title">
-    <h1 class="title-h1">'Allo, 'Allo!</h1>
-    <div>
-      <img class="title-logo" src="http://fountainjs.io/assets/imgs/yeoman.png"/>
-      <img class="title-logo" src="http://fountainjs.io/assets/imgs/fountain.png"/>
-    </div>
-    <h2 class="title-h2">Always a pleasure scaffolding your apps.</h2>
+    <h2 class="title-h2">Locations refreshed every 15 sec.</h2>
   </div>
 </template>
 

@@ -3,9 +3,6 @@
     <p class="header-title">
       <a>Muni Tracker</a>
     </p>
-    <p class="header-date">
-      Generated with FountainJS v0.6.0 on Wed Aug 10 2016 10:13:26 GMT+0200 (CEST)
-    </p>
   </header>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="root">
+  <div class="root">
     <header-component></header-component>
     <main>
       <title-component></title-component>
@@ -16,6 +16,8 @@ import MapDisplay from './components/mapDisplay/MapDisplay.vue';
 import Footer from './Footer.vue';
 import {dataCacheMx} from '../app/mixins/dataCache/dataCache.js';
 import {eventBarkerMx} from '../app/mixins/eventBarker/eventBarker.js';
+
+import './scss/map.scss';
 
 
 export default {
@@ -34,8 +36,6 @@ export default {
       console.log('main got cacherefresh', refreshed);
     });
     dataCacheMx.refreshCache();
-    // console.log('main mounted dataCache refresh:', refreshed, eventBarkerMx);
-    //eventBarkerMx.$emit('cacherefreshed', refreshed);
   }
 };
 </script>

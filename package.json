@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "d3": "^4.13.0",
-    "npm": "^5.7.1",
+    "npm": "^5.8.0",
     "vue": "^2.1.10",
     "vue-resource": "^1.2.0",
     "vue-router": "^2.2.1"
